@@ -51,6 +51,7 @@ class AddJob extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:'',
             date:'',
             time:'',
             skillName: [],
@@ -94,17 +95,6 @@ class AddJob extends React.Component {
           window.location.assign(`http://${window.location.hostname}/`);
       }
   }
-    // f1 = async () => {
-    // const snapShot = await firestore.collection(`workers/shreyash/`).get();
-    // const docsArray = snapShot.docs;
-    // const docsArrayData = docsArray.map(doc => doc.data());
-    // return docsArrayData;
-    // }
-    // functionFirebase = async () => {
-    //     const array = await this.f1();
-    //     this.setState(Object.assign(this.state.user,{user:array}))
-    //     console.log(array);
-    // }
     onDescChange = (event) => {
         this.setState({ desc: event.target.value })
         //console.log(this.state.desc)
@@ -141,7 +131,7 @@ class AddJob extends React.Component {
         // console.log(this.state);
         const { email,name,date, phNo,desc,time,location,skillName,title,payment} = this.state;
         console.log(this.state);
-        const userRef = firestore.doc(`jobs/${name}`);
+        const userRef = firestore.doc(`jobs/${name}`+`-`+`${title}`);
         //const snapShot = await firestore.collection('Users').get();
         
         const registeredUser = {email,name,date, phNo,desc,time,location,skillName,title,payment};

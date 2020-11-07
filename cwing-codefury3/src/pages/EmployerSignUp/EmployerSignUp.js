@@ -11,7 +11,7 @@ import { storage ,auth} from '../../backend/server';
 import {Redirect } from 'react-router-dom';
 import { firestore } from '../../backend/server';
 import Checkbox from '@material-ui/core/Checkbox';
-import './style.css'
+//import './style.css'
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
