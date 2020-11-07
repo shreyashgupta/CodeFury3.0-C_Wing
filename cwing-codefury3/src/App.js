@@ -7,7 +7,7 @@ import LabourerSignIn from './pages/LabourerSignIn';
 import EmployerSignIn from './pages/EmployerSignIn';
 import LabourerSignUp from './pages/LabourerSignUp';
 import EmployerSignUp from './pages/EmployerSignUp'
-import Navbar from './components/Navbar/Navbar';
+import Chat from './pages/chatbox/Chat';
 
 function App() {
   return (
@@ -31,6 +31,9 @@ function App() {
           </Route>
           <Route path='/empsignup'>
             <EmployerSignUp/>
+          </Route>
+          <Route path='/chat'>
+            <Chat/>
           </Route>
         </div>
       </BrowserRouter>
