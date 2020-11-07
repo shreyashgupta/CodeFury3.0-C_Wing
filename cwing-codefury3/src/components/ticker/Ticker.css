@@ -1,0 +1,30 @@
+.tickerbox {
+    position: absolute;
+    left: 0;
+    height: 500px;
+    position: relative;
+  
+    
+    padding: 10px;
+    width: auto;
+  
+    line-height: 50px;
+    
+  }
+  
+  #tickr-box {
+    width: auto;
+    height: auto;
+    bottom:0;
+    
+  }
+  
+   #tickr-scroll{
+    width:auto;
+    height:400px;
+    position: relative;
+    bottom:0;
+    line-height: 50px;
+    
+  
+  }
