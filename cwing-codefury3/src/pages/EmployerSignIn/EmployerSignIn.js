@@ -85,7 +85,7 @@ class EmployerSignIn extends React.Component {
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                 <input
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 x"
                   type="email"
                   name="email-address"
                   id="email-address"
@@ -95,7 +95,7 @@ class EmployerSignIn extends React.Component {
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 x"
                   type="password"
                   name="password"
                   id="password"
@@ -103,10 +103,10 @@ class EmployerSignIn extends React.Component {
                 />
               </div>
             </fieldset>
-            <div className="">
+            <div className="mv3">
               <input
                 onClick={this.onSubmitSignIn}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib x"
                 type="submit"
                 value="Sign in"
               />
