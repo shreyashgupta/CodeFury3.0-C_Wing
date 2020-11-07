@@ -49,6 +49,7 @@ class EmployerSignUp extends React.Component {
             date: '',
             phNo:'',
             aadhar: '',
+            type:"employer",
             pic: '',
             location: '',
             file1:null,
@@ -169,7 +170,7 @@ class EmployerSignUp extends React.Component {
         }
     }
     handleSubmit = async (event) => {
-        const { email,password,name,date,aadhar, phNo,pic, file1,file2,location} = this.state;
+        const { email,password,name,date,aadhar, phNo,pic, file1,file2,location,type} = this.state;
         console.log(this.state);
         if (!file1) {
             alert("Upload image first");
@@ -187,7 +188,7 @@ class EmployerSignUp extends React.Component {
             const userRef = firestore.doc(`employers/${name}`);
             //const snapShot = await firestore.collection('Users').get();
             
-            const registeredUser = {email,password,name,date,aadhar,phNo,pic,location};
+            const registeredUser = {email,password,name,date,aadhar,phNo,pic,location,type};
 
             try {
                 await userRef.set(registeredUser);
@@ -206,6 +207,7 @@ class EmployerSignUp extends React.Component {
                 aadhar: '',
                 pic: '',
                 location:'',
+                type:"employer",
                 file1:null,
                 file2:null
                 })

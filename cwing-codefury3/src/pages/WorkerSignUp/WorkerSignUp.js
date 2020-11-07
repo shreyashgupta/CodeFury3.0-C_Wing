@@ -46,6 +46,7 @@ class WorkerSignUp extends React.Component {
             email: '',
             password: '',
             name: '',
+            type:"worker",
             date: '',
             phNo:'',
             aadhar: '',
@@ -170,7 +171,7 @@ class WorkerSignUp extends React.Component {
         }
     }
     handleSubmit = async (event) => {
-        const { email,password,name,date,aadhar, phNo,pic, file1,file2,skillName } = this.state;
+        const { email,password,name,date,aadhar, phNo,pic, file1,file2,skillName, type } = this.state;
         console.log(this.state);
         if (!file1) {
             alert("Upload image first");
@@ -188,7 +189,7 @@ class WorkerSignUp extends React.Component {
             const userRef = firestore.doc(`workers/${name}`);
             //const snapShot = await firestore.collection('Users').get();
             
-            const registeredUser = {email,password,name,date,aadhar,phNo,pic,skillName};
+            const registeredUser = {email,password,name,date,aadhar,phNo,pic,skillName,type};
 
             try {
                 await userRef.set(registeredUser);
@@ -206,6 +207,7 @@ class WorkerSignUp extends React.Component {
                 phNo:'',
                 aadhar: '',
                 pic: '',
+                type:"worker",
                 skillName: [],
                 file1:null,
                 file2:null
