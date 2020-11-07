@@ -4,7 +4,9 @@ import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from './pages/LandingPage.js';
 import LabourerSignIn from './pages/LabourerSignIn';
-import EmployerSignIn from './pages/EmployerSignIn'
+import EmployerSignIn from './pages/EmployerSignIn';
+import LabourerSignUp from './pages/LabourerSignUp';
+import EmployerSignUp from './pages/EmployerSignUp'
 
 function App() {
   return (
@@ -22,6 +24,12 @@ function App() {
           </Route>
           <Route path='/JobSearch'>
             <Job/>
+          </Route>
+          <Route path='/labsignup'>
+            <LabourerSignUp/>
+          </Route>
+          <Route path='/empsignup'>
+            <EmployerSignUp/>
           </Route>
         </div>
       </BrowserRouter>
