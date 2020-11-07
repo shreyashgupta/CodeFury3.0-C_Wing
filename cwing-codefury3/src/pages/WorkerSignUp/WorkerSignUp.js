@@ -54,6 +54,7 @@ class WorkerSignUp extends React.Component {
             skillName: [],
             file1:null,
             file2:null,
+            applied:[],
             isLoggedIn: false
         }
         const token=localStorage.getItem('token');
@@ -171,16 +172,13 @@ class WorkerSignUp extends React.Component {
         }
     }
     handleSubmit = async (event) => {
-        const { email,password,name,date,aadhar, phNo,pic, file1,file2,skillName, type } = this.state;
+        const { email,password,name,date,aadhar, phNo,pic, file1,file2,skillName, type, applied} = this.state;
         console.log(this.state);
         if (!file1) {
             alert("Upload image first");
         }
         if (!file1) {
             alert("Upload image first");
-        }
-        else if (pic.length === 0) {
-            alert("You've chose the image but not uploaded it");
         }
         else if (!(name.length > 0 && phNo.length != 0 && email.length > 0)) {
             alert("Enter all the details");
@@ -189,10 +187,11 @@ class WorkerSignUp extends React.Component {
             const userRef = firestore.doc(`workers/${name}`);
             //const snapShot = await firestore.collection('Users').get();
             
-            const registeredUser = {email,password,name,date,aadhar,phNo,pic,skillName,type};
+            const registeredUser = {email,password,name,date,aadhar,phNo,pic,skillName,type,applied};
 
             try {
                 await userRef.set(registeredUser);
+                alert("signUp success")
                 auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
                   // Handle Errors here.
                   var errorCode = error.code;
@@ -207,6 +206,7 @@ class WorkerSignUp extends React.Component {
                 phNo:'',
                 aadhar: '',
                 pic: '',
+                applied:[],
                 type:"worker",
                 skillName: [],
                 file1:null,

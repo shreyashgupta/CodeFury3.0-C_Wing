@@ -47,7 +47,7 @@ class EmployerSignIn extends React.Component {
                 if(array[i].email===this.state.email)
                     //console.log(array[i].email,this.state.email)
                  this.setState({currentUser: array[i]})
-            console.log(this.state.currentUser)
+            //console.log(this.state.currentUser)
             localStorage.setItem("name",this.state.currentUser.name)
             localStorage.setItem("email",this.state.currentUser.email)
             localStorage.setItem("phNo",this.state.currentUser.phNo)
