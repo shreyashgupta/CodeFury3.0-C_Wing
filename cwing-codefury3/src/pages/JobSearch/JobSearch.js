@@ -1,7 +1,6 @@
 import React,{Component} from'react';
 import Cardlist from'./Cardlist';
 import './app.css';
-import { LocalStorage } from "node-localstorage";
 import './tagstyle.css'
 import ReactTags from 'react-tag-autocomplete'
 
@@ -15,6 +14,7 @@ class Job extends Component
 		{name:"akshara",age: 50,college:"cve",tags:["aksh","ra","all"]}],
 		serachfield:'',
 		route:0,
+		loggedIn:false,
 		tags:[],
 		name:"",
 		suggestions: [
@@ -29,16 +29,16 @@ class Job extends Component
 		loggedIn:false
 	}
 	    this.reactTags = React.createRef()
-		const token=localStorage.getItem("token")
-		if(token==null)
-		{
-			this.state.loggedIn=false;
-		}
-		else
-		{
-			this.state.loggedIn=true;
-			this.state.name=token;
-		}
+        const token=localStorage.getItem('token');
+        if(token==null)
+        {
+          this.state.loggedIn=false;
+        }
+        else
+        {
+          this.state.loggedIn=true;
+          this.state.name=token;
+        }
 }
   onDelete (i) {
     const tags = this.state.tags.slice(0)
@@ -78,9 +78,12 @@ render(){
 	       	this.state.loggedIn==false?<h1>Logged in</h1>:
 	       		   <div>  
 	     			<h1>{this.state.name}</h1>
+	       		   <div className="tc">  
+	       		   
 	       		    <header id="fixed">
 		        <h1 className>Job Search</h1>
 		        	</header>
+		        	<h1>{this.state.name}</h1>
 				<div className='search'>
 				<h3>Search By Tags</h3>
 				<ReactTags
@@ -93,6 +96,7 @@ render(){
 				</div>
 		        <Cardlist robots={filter}
 		        			onRouteChange={this.onRouteChange}/>
+ 		        </div>
  		        </div>
  		        )
        ;}
