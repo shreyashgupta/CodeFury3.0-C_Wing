@@ -7,10 +7,12 @@ import LabourerSignIn from './pages/LabourerSignIn';
 import EmployerSignIn from './pages/EmployerSignIn';
 import LabourerSignUp from './pages/LabourerSignUp';
 import EmployerSignUp from './pages/EmployerSignUp'
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <React.Fragment>
+      <Navbar />
       <BrowserRouter>
         <div className="App">
           <Route exact path='/'>
