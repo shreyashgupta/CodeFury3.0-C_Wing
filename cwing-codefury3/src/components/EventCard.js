@@ -99,7 +99,9 @@ export default function RecipeReviewCard(props) {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            Keywords: {props.event.keywords}
+            Keywords: {props.event.skillName.map(element => {
+            return element + ",";
+          })}
           </Typography>
         </CardContent>
         <CardActions disableSpacing style={{ marginTop: "auto" }}>
@@ -154,7 +156,9 @@ export default function RecipeReviewCard(props) {
                 <b>Location:</b> {props.event.location}
               </span><br /><br />
               <span style={{ fontSize: "1em", margin: "2px" }}>
-                <b>Keywords:</b> {props.event.keywords}
+                <b>Keywords:</b> {props.event.skillName.map(element => {
+                  return element + ",";
+                })}
               </span>
             </div>
             <div className={classes.poster}>
