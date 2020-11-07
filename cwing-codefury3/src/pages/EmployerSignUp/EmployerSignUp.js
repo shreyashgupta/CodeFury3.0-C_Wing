@@ -55,6 +55,9 @@ class EmployerSignUp extends React.Component {
   handleSignOut = (event) => {
       auth.signOut();
       localStorage.removeItem('token');
+      localStorage.removeItem('name');
+      localStorage.removeItem('phNo');
+      localStorage.removeItem('email');
       alert("Logged out successfully");
       if(window.location.port){
           window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
@@ -201,7 +204,12 @@ class EmployerSignUp extends React.Component {
                 file1:null,
                 file2:null
                 })
-                return <Redirect to='/'/>
+              if(window.location.port){
+                  window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
+              }
+              else{
+                  window.location.assign(`http://${window.location.hostname}/`);
+              }
 
             } catch (error) {
                 console.log(error);
