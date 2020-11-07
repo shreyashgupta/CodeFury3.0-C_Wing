@@ -4,6 +4,8 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 import { isMobile, isMobileOnly } from 'react-device-detect';
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import { auth } from '../../backend/server';
 //import Link from 'react-dom';
 export default function Navbar() {
     const [drawer, setDrawer] = React.useState(false);
@@ -77,16 +79,26 @@ export default function Navbar() {
                                 </Button>
                             </Tooltip>
                             <Tooltip title="SignIn">
-                                <Button
+                                {auth.currentUser ? (<Button
                                     color="inherit"
                                     variant="outlined"
                                     style={{ fontSize: "1.3em", marginRight: "5px" }}
                                     onMouseOver={handleHover}
                                     onClick={handleHover}
-                                    //onMouseOut={() => setAnchorEl(null)}
+                                //onMouseOut={() => setAnchorEl(null)}
+                                >
+                                    <PersonOutlineOutlinedIcon/> More
+                            </Button>) :
+                             (<Button
+                                    color="inherit"
+                                    variant="outlined"
+                                    style={{ fontSize: "1.3em", marginRight: "5px" }}
+                                    onMouseOver={handleHover}
+                                    onClick={handleHover}
+                                //onMouseOut={() => setAnchorEl(null)}
                                 >
                                     Login
-                            </Button>
+                            </Button>)}
                             </Tooltip>
                             <Menu
                                 id="menu-appbar"
@@ -101,14 +113,21 @@ export default function Navbar() {
                                     horizontal: 'right',
                                 }}
                                 open={Boolean(anchorEl)}
-                                onClose={()=>setAnchorEl(null)}
+                                onClose={() => setAnchorEl(null)}
                                 //onMouseLeave={()=>setAnchorEl(null)}
                                 // onMouseOut={()=>setAnchorEl(null)}
                                 //onMouseOutCapture={()=>setAnchorEl(null)}
-                                onMouseDown={()=>setAnchorEl(null)}
+                                onMouseDown={() => setAnchorEl(null)}
                             >
-                                <MenuItem onClick={()=>setAnchorEl(null)}>Worker Login</MenuItem>
-                                <MenuItem onClick={()=>setAnchorEl(null)}>Employer Login</MenuItem>
+                                {auth.currentUser ?
+                                    (<div>
+                                        <MenuItem onClick={() => setAnchorEl(null)}>My Profile</MenuItem>
+                                        <MenuItem onClick={() => { auth.signOut(); window.location.assign("/") }}>Logout</MenuItem>
+                                    </div>)
+                                    : (<div>
+                                        <MenuItem onClick={() => window.location.assign("/labsignin")}>Worker Login</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign("/empsignin")}>Employer Login</MenuItem>
+                                    </div>)}
                             </Menu>
                         </span>
                         )}
@@ -123,16 +142,44 @@ export default function Navbar() {
                                         onKeyDown={() => setDrawer(false)}
                                     >
                                         <List>
-                                            {['My Profile', 'My Jobs', 'Notifications'].map((text, index) => (
-                                                <ListItem button key={text}>
-                                                    {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
-                                                    <ListItemText primary={text} />
-                                                </ListItem>
-                                            ))}
+                                            {auth.currentUser ? (<div>
+                                                    <ListItem button key="My Profile" onClick={() => window.location.assign("/")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="My Profile" />
+                                                    </ListItem>
+                                                    <ListItem button key="My Jobs" onClick={() => window.location.assign("/")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="My Jobs" />
+                                                    </ListItem>
+                                                    <ListItem button key="Notifications" onClick={() => window.location.assign("/")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="Notifications" />
+                                                    </ListItem>
+                                                    <ListItem button key="Logout" onClick={() => {auth.signOut();window.location.assign("/")}}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="Logout" />
+                                                    </ListItem>
+                                                </div>
+                                            ) :
+                                                (<div>
+                                                    <ListItem button key="Worker Login" onClick={() => window.location.assign("/labsignin")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="Worker Login" />
+                                                    </ListItem>
+                                                    <ListItem button key="Employer Login" onClick={() => window.location.assign("/empsignin")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="Employer Login" />
+                                                    </ListItem>
+                                                    <ListItem button key="Sign Up" onClick={() => window.location.assign("/")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="Sign Up" />
+                                                    </ListItem>
+                                                </div>
+                                                )}
                                         </List>
                                         <Divider />
                                         <List>
-                                            {['About Us', 'Contact Us', 'Logout'].map((text, index) => (
+                                            {['About Us', 'Contact Us'].map((text, index) => (
                                                 <ListItem button key={text}>
                                                     {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
                                                     <ListItemText primary={text} />
