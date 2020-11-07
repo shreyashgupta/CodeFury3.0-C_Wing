@@ -1,0 +1,25 @@
+
+.f0{
+color: black;
+text-shadow: 1px 1px black;
+font-size: 60px;
+
+}
+#fixed 
+{ position: sticky;
+	top:0;
+	left: 0;
+	width: 100%;
+	z-index: 99; 
+}
+.search
+{
+	display: flex;
+	justify-content: center;
+	height:50px;
+	align-items: center;
+}
+.search>*
+{
+	margin:20px;
+}
