@@ -11,6 +11,7 @@ import EmployerSignUp from './pages/EmployerSignUp/EmployerSignUp';
 import AddJob from './pages/AddJob/AddJob';
 import Navbar from './components/Navbar/Navbar';
 import JobPortal from './pages/JobPortal/JobPortal';
+import Footer from './components/Footer';
 // import Map from './components/Map.js';
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           </Route>
         </div>
       </BrowserRouter>
+      <Footer/>
     </React.Fragment>
   );
 }
