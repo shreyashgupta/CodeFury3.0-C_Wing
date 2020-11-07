@@ -8,6 +8,7 @@ import EmployerSignIn from './pages/EmployerSignIn/EmployerSignIn';
 import WorkerSignUp from './pages/WorkerSignUp/WorkerSignUp';
 import EmployerSignUp from './pages/EmployerSignUp/EmployerSignUp';
 import Navbar from './components/Navbar/Navbar';
+import JobPortal from './pages/JobPortal/JobPortal';
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path='/empsignup'>
             <EmployerSignUp/>
+          </Route>
+          <Route path='/jobportal'>
+            <JobPortal/>
           </Route>
         </div>
       </BrowserRouter>

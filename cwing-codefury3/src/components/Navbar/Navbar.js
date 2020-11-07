@@ -48,7 +48,7 @@ export default function Navbar() {
                                     color="inherit"
                                     variant="outlined"
                                     style={{ fontSize: "1.3em", marginRight: "5px" }}
-                                    onClick={() => (window.location.href = "/")}
+                                    onClick={() => (window.location.href = "/jobportal")}
                                 >
                                     <PublicOutlinedIcon /> Explore
                                 </Button>
