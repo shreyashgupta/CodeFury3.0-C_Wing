@@ -25,6 +25,9 @@ class EmployerSignIn extends React.Component {
   handleSignOut = (event) => {
       auth.signOut();
       localStorage.removeItem('token');
+      localStorage.removeItem('name');
+      localStorage.removeItem('phNo');
+      localStorage.removeItem('email');
       alert("Logged out successfully");
       if(window.location.port){
           window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
@@ -74,12 +77,7 @@ class EmployerSignIn extends React.Component {
           // console.log(this.state.users);
           //alert(`Logged in as Employer successfully`);
           localStorage.setItem('token',"employer");
-          // if(window.location.port){   //
-          //     window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
-          // }
-          // else{
-          //     window.location.assign(`http://${window.location.hostname}/`);
-          // }
+          alert("SignedIn")
 
       } catch (error) {
           console.log(error);
