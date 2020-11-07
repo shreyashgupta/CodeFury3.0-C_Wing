@@ -4,36 +4,11 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 import { isMobile, isMobileOnly } from 'react-device-detect';
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
+import './nav.css'
 //import Link from 'react-dom';
 export default function Navbar() {
     const [drawer, setDrawer] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
-
-    // const list = () => (
-    //     <div
-    //         role="presentation"
-    //         //onClick={setDrawer(false)}
-    //         onKeyDown={setDrawer(false)}
-    //     >
-    //         <List>
-    //             {['My Profile', 'My Jobs', 'Notifications'].map((text, index) => (
-    //                 <ListItem button key={text}>
-    //                     {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon> */}
-    //                     <ListItemText primary={text} />
-    //                 </ListItem>
-    //             ))}
-    //         </List>
-    //         <Divider />
-    //         <List>
-    //             {['About Us', 'Contact Us', 'Logout'].map((text, index) => (
-    //                 <ListItem button key={text}>
-    //                     {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-    //                     <ListItemText primary={text} />
-    //                 </ListItem>
-    //             ))}
-    //         </List>
-    //     </div>
-    // );
     const handleHover = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -41,7 +16,7 @@ export default function Navbar() {
     return (
         <React.Fragment>
             <AppBar position="fixed">
-                <Toolbar style={{ height: "80px", display: "flex", flexDirection: "row" }}>
+                <Toolbar style={{ height: "60px", display: "flex", flexDirection: "row" }}>
                     <div>
                         {/* <Link to='/'> */}
                         <img src={'/images/Logo.jpg'} height="70px" style={{ float: "left", borderRadius: "70px" }} alt="App logo" />
