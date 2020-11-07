@@ -14,6 +14,7 @@ class Job extends Component
 		{name:"akshara",age: 50,college:"cve",tags:["aksh","ra","all"]}],
 		serachfield:'',
 		route:0,
+		loggedIn:false,
 		tags:[],
 		suggestions: [
 		{ id: 1, name: "shrey" },
@@ -26,6 +27,16 @@ class Job extends Component
 		{ id: 8, name: "ra" }],
 	}
 	    this.reactTags = React.createRef()
+        const token=localStorage.getItem('token');
+        if(token==null)
+        {
+          this.state.loggedIn=false;
+        }
+        else
+        {
+          this.state.loggedIn=true;
+          this.state.name=token;
+        }
 }
   onDelete (i) {
     const tags = this.state.tags.slice(0)
@@ -62,9 +73,11 @@ render(){
 	    )
 	       return (
 	       		   <div className="tc">  
+	       		   
 	       		    <header id="fixed">
 		        <h1 className="f0">Job Search</h1>
 		        	</header>
+		        	<h1>{this.state.name}</h1>
 				<div className='search'>
 
 				<h3>Search By Tags</h3>
