@@ -1,10 +1,14 @@
-import logo from './logo.svg';
+import React from "react"
 import './App.css';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <H1>C WING</H1>
+      <h1>C WING</h1>
+      <br></br>
+      <br></br>
+      <Footer />
     </div>
   );
 }
