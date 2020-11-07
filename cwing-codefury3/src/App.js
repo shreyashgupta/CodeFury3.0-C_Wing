@@ -12,7 +12,6 @@ import Navbar from './components/Navbar/Navbar';
 function App() {
   return (
     <React.Fragment>
-      <Navbar />
       <BrowserRouter>
         <div className="App">
           <Route exact path='/'>
