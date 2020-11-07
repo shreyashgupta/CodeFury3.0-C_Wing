@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Job from './pages/JobSearch/JobSearch.js'
 function App() {
   return (
     <div className="App">
-      <H1>C WING</H1>
+      <Job/>
     </div>
   );
 }
