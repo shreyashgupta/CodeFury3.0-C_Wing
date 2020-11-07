@@ -1,0 +1,27 @@
+.ind{
+	 font-family: "Comic Sans MS", cursive, sans-serif;
+	 color:white;
+	 display: flex;
+	 flex-direction:column; 
+	 justify-content: space-around;
+	 align-items: center;
+}
+.im
+{
+	width:200px;
+	border-radius: 100%;
+	background-color: rgba(0,0,0,.5);
+	box-shadow: -1px 1px 1px .1px red
+}
+#title
+{
+	text-align: center;
+	font-size: 30px;
+}
+.content
+{
+	margin: 10vw;
+	margin-top:10px;
+	text-align: center;
+	font-size: 20px;
+}
