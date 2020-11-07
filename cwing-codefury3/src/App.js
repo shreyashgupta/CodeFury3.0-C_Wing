@@ -21,13 +21,13 @@ function App() {
           <Route path='/empsignin'>
             <EmployerSignIn />
           </Route>
-          <Route path='/labsignin'>
+          <Route path='/worksignin'>
             <WorkerSignIn />
           </Route>
           <Route path='/JobSearch'>
             <Job/>
           </Route>
-          <Route path='/labsignup'>
+          <Route path='/worksignup'>
             <WorkerSignUp/>
           </Route>
           <Route path='/empsignup'>
