@@ -64,7 +64,7 @@ const event = {
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
   const prefersDarkMode = localStorage.getItem('darkMode') === 'true';
-  let loggedIn = localStorage.getItem('token') === 'true';
+  let loggedIn = localStorage.getItem('isAuthenticated') === 'true';
   console.log(loggedIn)
   let mobile = window.matchMedia('(max-width: 300px)').matches === 'true';
   const [open, setOpen] = React.useState(false);

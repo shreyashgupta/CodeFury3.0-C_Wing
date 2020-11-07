@@ -1,6 +1,6 @@
 import React from 'react';
 import 'tachyons';
-import { auth } from '../../backend/server';
+import { auth , firestore} from '../../backend/server';
 class EmployerSignIn extends React.Component {
  constructor(props) {
         super(props)
@@ -8,9 +8,10 @@ class EmployerSignIn extends React.Component {
         this.state = {
             email: '',
             password: '',
-            currentUser: null,
+            currentUser: {},
             history: props.history,
-            loggedIn:false
+            loggedIn:false,
+            users:[]
         }
         const token=localStorage.getItem('token');
         if(token==null)
@@ -20,6 +21,7 @@ class EmployerSignIn extends React.Component {
         else
           this.state.loggedIn=true;
     }
+
   handleSignOut = (event) => {
       auth.signOut();
       localStorage.removeItem('token');
@@ -30,6 +32,25 @@ class EmployerSignIn extends React.Component {
       else{
           window.location.assign(`http://${window.location.hostname}/`);
       }
+  }
+
+    f1 = async () => {
+    const snapShot = await firestore.collection('employers').get();
+    const docsArray = snapShot.docs;
+    const docsArrayData = docsArray.map(doc => doc.data());
+    return docsArrayData;
+  }
+  functionFirebase = async () => {
+            const array = await this.f1();
+            //console.log(array)
+            for(let i=0;i<array.length;i++)
+                if(array[i].email===this.state.email)
+                    //console.log(array[i].email,this.state.email)
+                 this.setState({currentUser: array[i]})
+            console.log(this.state.currentUser)
+            localStorage.setItem("name",this.state.currentUser.name)
+            localStorage.setItem("email",this.state.currentUser.email)
+            localStorage.setItem("phNo",this.state.currentUser.phNo)
   }
   onEmailChange = (event) => {
     this.setState({email: event.target.value})
@@ -43,18 +64,22 @@ class EmployerSignIn extends React.Component {
       event.preventDefault();
 
       const { email, password } = this.state;
-
       console.log(this.state)
       try {
           await auth.signInWithEmailAndPassword(email, password);
-          alert(`Logged in as user successfully`);
+
+          this.functionFirebase();
+          // for(let i=0;i<1000;i++)
+          //   for(let j=0;j>5;j++);
+          // console.log(this.state.users);
+          //alert(`Logged in as Employer successfully`);
           localStorage.setItem('token',"employer");
-          if(window.location.port){   //
-              window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
-          }
-          else{
-              window.location.assign(`http://${window.location.hostname}/`);
-          }
+          // if(window.location.port){   //
+          //     window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
+          // }
+          // else{
+          //     window.location.assign(`http://${window.location.hostname}/`);
+          // }
 
       } catch (error) {
           console.log(error);

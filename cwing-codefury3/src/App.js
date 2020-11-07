@@ -8,6 +8,7 @@ import WorkerSignIn from './pages/WorkerSignIn/WorkerSignIn';
 import EmployerSignIn from './pages/EmployerSignIn/EmployerSignIn';
 import WorkerSignUp from './pages/WorkerSignUp/WorkerSignUp';
 import EmployerSignUp from './pages/EmployerSignUp/EmployerSignUp';
+import AddJob from './pages/AddJob/AddJob';
 import Navbar from './components/Navbar/Navbar';
 // import Map from './components/Map.js';
 
@@ -41,6 +42,9 @@ function App() {
           {/* <Route path='/chat'>
             <Chat/>
           </Route> */}
+          <Route path='/addjob'>
+            <AddJob/>
+          </Route>
         </div>
       </BrowserRouter>
     </React.Fragment>

@@ -22,19 +22,6 @@ const MenuProps = {
         },
     },
 };
-
-const names = [
-    'Plumber',
-    'Construction Work',
-    'Welding',
-    'HouseKeeper',
-    'Watchman',
-    'Driver',
-    'Masonry',
-    'Carpentary',
-    'Cook',
-    'Maids',
-];
 // const classes = useStyles();
 
 
