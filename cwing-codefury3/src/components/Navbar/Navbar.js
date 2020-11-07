@@ -102,6 +102,8 @@ export default function Navbar() {
                                     : (<div>
                                         <MenuItem onClick={() => window.location.assign("/labsignin")}>Worker Login</MenuItem>
                                         <MenuItem onClick={() => window.location.assign("/empsignin")}>Employer Login</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign("/labsignup")}>Worker Sign Up</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign("/empsignup")}>Employer Sign Up</MenuItem>
                                     </div>)}
                             </Menu>
                         </span>
@@ -145,9 +147,13 @@ export default function Navbar() {
                                                         {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
                                                         <ListItemText primary="Employer Login" />
                                                     </ListItem>
-                                                    <ListItem button key="Sign Up" onClick={() => window.location.assign("/")}>
+                                                    <ListItem button key="Labourer Sign Up" onClick={() => window.location.assign("/labsignup")}>
                                                         {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
-                                                        <ListItemText primary="Sign Up" />
+                                                        <ListItemText primary="Labourer Sign Up" />
+                                                    </ListItem>
+                                                    <ListItem button key="Employer Sign Up" onClick={() => window.location.assign("/empsignup")}>
+                                                        {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
+                                                        <ListItemText primary="Employer Sign Up" />
                                                     </ListItem>
                                                 </div>
                                                 )}
