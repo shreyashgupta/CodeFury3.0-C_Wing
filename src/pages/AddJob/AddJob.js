@@ -63,7 +63,8 @@ class AddJob extends React.Component {
             phNo:'',
             'desc':'',
             'title':'',
-            payment:''
+            payment:'',
+            applicants:[],
         }
 
         let name=localStorage.getItem("name");
@@ -129,12 +130,13 @@ class AddJob extends React.Component {
     handleSubmit = async (event) => {
         //this.functionFirebase();
         // console.log(this.state);
-        const { email,name,date, phNo,desc,time,location,skillName,title,payment} = this.state;
+        const { email,name,date, phNo,desc,time,location,skillName,title,payment,applicants} = this.state;
         console.log(this.state);
-        const userRef = firestore.doc(`jobs/${name}`+`-`+`${title}`);
+
+        const userRef = firestore.doc(`jobs/${name}-${title}`);
         //const snapShot = await firestore.collection('Users').get();
         
-        const registeredUser = {email,name,date, phNo,desc,time,location,skillName,title,payment};
+        const registeredUser = {email,name,date, phNo,desc,time,location,skillName,title,payment,applicants};
 
         try {
             await userRef.set(registeredUser);
@@ -144,7 +146,8 @@ class AddJob extends React.Component {
                 location:'',
                 date:'',
                 title:'',
-                payment:''
+                payment:'',
+                applicants:[]
             })
       alert("Job Post successfull");
       if(window.location.port){

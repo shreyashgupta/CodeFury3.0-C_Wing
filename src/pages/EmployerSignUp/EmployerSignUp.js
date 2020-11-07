@@ -11,7 +11,7 @@ import { storage ,auth} from '../../backend/server';
 import {Redirect } from 'react-router-dom';
 import { firestore } from '../../backend/server';
 import Checkbox from '@material-ui/core/Checkbox';
-//import './style.css'
+import './style.css'
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -221,7 +221,8 @@ class EmployerSignUp extends React.Component {
     render() {
         return (
             this.state.isLoggedIn==false?
-            <article className="br3 ba b--black-10 mv4 tc w-00 w-50-m w-25-l mw6 shadow-5 center main">
+            <div className="cover">
+            <article className="br3 ba b--black-10 mv4 tc w-00 w-50-m w-25-l mw6 shadow-5 center main pt">
                 <main className="pa4 black-80">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -308,7 +309,7 @@ class EmployerSignUp extends React.Component {
                         </div>
                     </div>
                 </main>
-            </article>:
+            </article></div>:
                   <div>
                     <input
                     onClick={this.handleSignOut}

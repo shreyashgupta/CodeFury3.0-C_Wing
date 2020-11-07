@@ -8,7 +8,7 @@ import {Instagram, LinkedIn, EmailOutlined} from '@material-ui/icons';
 // Makes new style for footer
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: "#111111",
+        backgroundColor: "black",
         padding: theme.spacing(6),
         borderTop: localStorage.getItem('darkMode')?'1px solid #eee':'none'
     },

@@ -10,12 +10,14 @@ import WorkerSignUp from './pages/WorkerSignUp/WorkerSignUp';
 import EmployerSignUp from './pages/EmployerSignUp/EmployerSignUp';
 import AddJob from './pages/AddJob/AddJob';
 import Navbar from './components/Navbar/Navbar';
+import JobPortal from './pages/JobPortal/JobPortal';
 import Footer from './components/Footer';
 // import Map from './components/Map.js';
 
 function App() {
   return (
     <React.Fragment>
+      <Navbar />
       <BrowserRouter>
         <div className="App">
           <Route exact path='/'>
@@ -35,6 +37,9 @@ function App() {
           </Route>
           <Route path='/empsignup'>
             <EmployerSignUp/>
+          </Route>
+          <Route path='/jobportal'>
+            <JobPortal/>
           </Route>
           {/* <Route path='/map'>
             <Map/>
