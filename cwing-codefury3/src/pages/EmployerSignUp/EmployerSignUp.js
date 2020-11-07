@@ -22,19 +22,6 @@ const MenuProps = {
         },
     },
 };
-
-const names = [
-    'Plumber',
-    'Construction Work',
-    'Welding',
-    'HouseKeeper',
-    'Watchman',
-    'Driver',
-    'Masonry',
-    'Carpentary',
-    'Cook',
-    'Maids',
-];
 // const classes = useStyles();
 
 
@@ -54,7 +41,8 @@ class EmployerSignUp extends React.Component {
             location: '',
             file1:null,
             file2:null,
-            isLoggedIn: false
+            isLoggedIn: false,
+            applied:[]
         }
         const token=localStorage.getItem('token');
         if(token==null)
@@ -170,7 +158,7 @@ class EmployerSignUp extends React.Component {
         }
     }
     handleSubmit = async (event) => {
-        const { email,password,name,date,aadhar, phNo,pic, file1,file2,location,type} = this.state;
+        const { email,password,name,date,aadhar, phNo,pic, file1,file2,location,type,applied} = this.state;
         console.log(this.state);
         if (!file1) {
             alert("Upload image first");
@@ -188,10 +176,11 @@ class EmployerSignUp extends React.Component {
             const userRef = firestore.doc(`employers/${name}`);
             //const snapShot = await firestore.collection('Users').get();
             
-            const registeredUser = {email,password,name,date,aadhar,phNo,pic,location,type};
+            const registeredUser = {email,password,name,date,aadhar,phNo,pic,location,type,applied};
 
             try {
                 await userRef.set(registeredUser);
+                alert("signUp success")
                 auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
                   // Handle Errors here.
                   var errorCode = error.code;
@@ -208,6 +197,7 @@ class EmployerSignUp extends React.Component {
                 pic: '',
                 location:'',
                 type:"employer",
+                applied:'',
                 file1:null,
                 file2:null
                 })
@@ -227,7 +217,7 @@ class EmployerSignUp extends React.Component {
                 <main className="pa4 black-80">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                            <legend className="f1 fw6 ph0 mh0">Worker SignUp</legend>
+                            <legend className="f1 fw6 ph0 mh0">Employer SignUp</legend>
                             <div className="mt3 center">
                                 <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                                 <input

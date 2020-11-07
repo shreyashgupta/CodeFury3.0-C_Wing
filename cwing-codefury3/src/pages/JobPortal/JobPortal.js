@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Typography, Paper, Grid, TextField } from '@material-ui/core';
+import { Card, Typography, Paper, Grid, TextField, Button, FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { auth, firestore } from '../../backend/server';
-import JobCard from '../../components/EventCard';
+import JobCard from '../../components/EventCard/EventCard';
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -53,7 +53,8 @@ export default class JobPortal extends React.Component {
                         .search(__self.state.jobSearchText.toLowerCase()) !== -1
                         ||
                     item.name.toLowerCase()
-                    .search(__self.state.jobSearchText.toLowerCase()) !== -1
+                    .search(__self.state.jobSearchText.toLowerCase()) !== -1 ||
+                    item.skillName.toString().toLowerCase().search(__self.state.jobSearchText.toLowerCase()) !== -1
                 );
             });
 
@@ -82,15 +83,11 @@ export default class JobPortal extends React.Component {
                         <Typography variant="h4">Find New Jobs</Typography>
                     </Card>
                 </Paper>
-                <TextField label="Search Jobs" value={this.state.jobSearchText} onChange={this.handleSearch} margin="normal"/>
+                <FormControl>
+                <TextField label="Search Jobs" value={this.state.jobSearchText} onChange={this.handleSearch} style={{marginTop:"1%"}}/>
+                </FormControl>
+                <Button onClick={() => window.location.assign("/addjob")} style={{float:"right", backgroundColor:"green", marginTop:"1%"}}>+Add new Job</Button>
                 <Grid container spacing={1} style={{ margin: "1%" }}>
-                    {this.state.filteredJobs.map(element => {
-                        return (
-                            <Grid item lg={3} md={4} xs={12}>
-                                <JobCard event={element} />
-                            </Grid>
-                        )
-                    })}
                     {this.state.filteredJobs.map(element => {
                         return (
                             <Grid item lg={3} md={4} xs={12}>

@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 //import MuiAlert from "@material-ui/lab/Alert";
 import { Dialog, DialogTitle, DialogContent, DialogActions } from "@material-ui/core";
-import { auth } from '../backend/server';
+import { auth,firestore } from '../../backend/server';
 
 // function Alert(props) {
 //   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -65,17 +65,36 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
   const prefersDarkMode = localStorage.getItem('darkMode') === 'true';
-  let loggedIn = auth.currentUser;
+  let loggedIn = localStorage.getItem('token') !== null;
+  let useremail = localStorage.getItem('email');
+  let userType = localStorage.getItem('token');
   console.log(loggedIn)
   let mobile = window.matchMedia('(max-width: 300px)').matches === 'true';
   const [open, setOpen] = React.useState(false);
   const [eventDialog, setEventDialog] = React.useState(false);
+  let user = localStorage.getItem('token');
 
   //Shows snackbar with message and copies link in '' for user
   const handleClick = () => {
     setOpen(true);
     navigator.clipboard.writeText("Copy this text to clipboard");
   };
+
+  const applyForJob = () => {
+    let job=firestore.collection("jobs").doc(`${props.event.name}`+"-"+`${props.event.title}`);
+    if(job === null) return;
+    job.get().then((doc) => {
+      console.log(doc.data().desc)
+      let applicants = doc.data().applicants;
+      applicants[applicants.length]=useremail;
+      console.log(applicants);
+      job.update({
+      applicants:applicants
+    })
+  }
+    )
+    
+  }
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -126,8 +145,7 @@ export default function RecipeReviewCard(props) {
       >
         <DialogTitle>
           {props.event.title}
-          {loggedIn && (<div style={{ float: "right", display: "flex", flexDirection: "row" }}>
-            <Button size="small">Edit</Button>
+          {loggedIn && (useremail===props.event.email) &&(<div style={{ float: "right", display: "flex", flexDirection: "row" }}>
             <Button size="small">Remove</Button>
           </div>)}
         </DialogTitle>
@@ -137,7 +155,7 @@ export default function RecipeReviewCard(props) {
               <span style={{ fontSize: "1em" }}>
                 <b>Employer:</b> {props.event.name}
               </span><br /><br />
-              <span style={{ fontSize: "1em" }}>
+              <span style={{ fontSize: "1em"}}>
                 <b>Description:</b> {props.event.desc}
               </span><br /><br />
               <span style={{ fontSize: "1em", margin: "2px" }}>
@@ -167,7 +185,7 @@ export default function RecipeReviewCard(props) {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setEventDialog(false)}>Apply</Button>
+          {loggedIn && userType==="employer" &&(<Button onClick={applyForJob}>Apply</Button>)}
           <Button onClick={() => setEventDialog(false)}>Close</Button>
         </DialogActions>
       </Dialog>
