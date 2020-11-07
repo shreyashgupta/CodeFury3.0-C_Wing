@@ -3,7 +3,6 @@
 color: black;
 text-shadow: 1px 1px black;
 font-size: 60px;
-
 }
 #fixed 
 { position: sticky;
@@ -23,3 +22,7 @@ font-size: 60px;
 {
 	margin:20px;
 }
+/*.search .react-tags
+{
+	width:30vw;
+}*/

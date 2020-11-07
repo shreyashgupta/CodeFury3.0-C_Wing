@@ -1,6 +1,7 @@
 import React from 'react';
 import 'tachyons';
 import { auth } from '../backend/server';
+//import { LocalStorage } from "node-localstorage";
 class Signin extends React.Component {
  constructor(props) {
         super(props)
@@ -30,6 +31,7 @@ class Signin extends React.Component {
       try {
           await auth.signInWithEmailAndPassword(email, password);
           alert(`Logged in as user successfully`);
+          localStorage.setItem("token",'employer');
           if(window.location.port){   //
               window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
           }
