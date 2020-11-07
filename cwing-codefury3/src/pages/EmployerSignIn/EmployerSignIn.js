@@ -1,7 +1,7 @@
 import React from 'react';
 import 'tachyons';
-import { auth } from '../backend/server';
-class Signin extends React.Component {
+import { auth } from '../../backend/server';
+class EmployerSignIn extends React.Component {
  constructor(props) {
         super(props)
 
@@ -126,4 +126,4 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default EmployerSignIn;

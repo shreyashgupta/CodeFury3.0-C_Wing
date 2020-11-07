@@ -35,7 +35,7 @@ const names = [
 
 
 
-class LabourerSignUp extends React.Component {
+class WorkerSignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -215,4 +215,4 @@ class LabourerSignUp extends React.Component {
     }
 }
 
-export default LabourerSignUp;
+export default WorkerSignUp;
