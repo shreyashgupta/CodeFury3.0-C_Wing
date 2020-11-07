@@ -1,7 +1,7 @@
 import React from 'react';
 import 'tachyons';
-import { auth } from '../backend/server';
-class Signin extends React.Component {
+import { auth } from '../../backend/server';
+class EmployerSignIn extends React.Component {
  constructor(props) {
         super(props)
 
@@ -85,7 +85,7 @@ class Signin extends React.Component {
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                 <input
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 x"
                   type="email"
                   name="email-address"
                   id="email-address"
@@ -95,7 +95,7 @@ class Signin extends React.Component {
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 x"
                   type="password"
                   name="password"
                   id="password"
@@ -103,10 +103,10 @@ class Signin extends React.Component {
                 />
               </div>
             </fieldset>
-            <div className="">
+            <div className="mv3">
               <input
                 onClick={this.onSubmitSignIn}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib x"
                 type="submit"
                 value="Sign in"
               />
@@ -126,4 +126,4 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default EmployerSignIn;

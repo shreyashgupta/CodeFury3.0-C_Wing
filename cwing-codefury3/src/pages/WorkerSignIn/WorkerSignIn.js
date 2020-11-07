@@ -2,7 +2,7 @@ import React from 'react';
 import 'tachyons';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-class Signin extends React.Component {
+class WorkerSignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,4 +82,4 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default WorkerSignIn;

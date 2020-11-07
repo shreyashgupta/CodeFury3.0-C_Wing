@@ -1,18 +1,34 @@
 import React from 'react';
 import { Container, Grid, Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import HomeCaraousel from '../../components/HomeCaraousel';
+
 // import { isMobile } from 'react-device-detect';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        backgroundColor: "#FFF"
-    },
+    root: theme.root,
     container: theme.page,
     paper: {
         ...theme.paper,
         padding: theme.spacing(4)
     },
+    carousel: {
+        margin: "auto",
+        paddingTop: theme.spacing(4),
+    }
 }))
+
+const carouselImages = [
+    {
+        src: "images/LandingPage.png",
+    },
+    {
+        src: "images/LandingPage.png",
+    },
+    {
+        src: "images/LandingPage.png",
+    }
+];
 
 
 export default function LandingPage() {
@@ -20,7 +36,7 @@ export default function LandingPage() {
 
     return (
         <React.Fragment>
-            <img src="images/LandingPage.png" style={{ maxHeight: "100vh", width: "100%" }} />
+            <img src="images/LandingPage.png" style={{ maxHeight: "90vh", width: "100%" }} />
             <Container maxWidth='xl' className={classes.root}><br />
                 <div>
                     <Typography variant='h4'>
