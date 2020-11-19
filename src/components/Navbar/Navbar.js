@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Button, useScrollTrigger, IconButton, List, ListItem, 
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 import { isMobile, isMobileOnly } from 'react-device-detect';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import { auth } from '../../backend/server';
@@ -14,7 +15,17 @@ export default function Navbar() {
     const handleHover = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
+  var handleSignOut = (event) => {
+      auth.signOut();
+      localStorage.removeItem('token');
+      alert("Logged out successfully");
+      if(window.location.port){
+          window.location.assign(`http://${window.location.hostname}:${window.location.port}/`);
+      }
+      else{
+          window.location.assign(`http://${window.location.hostname}/`);
+      }
+  }
     return (
         <React.Fragment>
             <AppBar position="fixed">
@@ -97,13 +108,13 @@ export default function Navbar() {
                                 {auth.currentUser ?
                                     (<div>
                                         <MenuItem onClick={() => setAnchorEl(null)}>My Profile</MenuItem>
-                                        <MenuItem onClick={() => { auth.signOut(); window.location.assign("/") }}>Logout</MenuItem>
+                                        <MenuItem onClick={handleSignOut}>Logout</MenuItem>
                                     </div>)
                                     : (<div>
-                                        <MenuItem onClick={() => window.location.assign("/worksignin")}>Worker Login</MenuItem>
-                                        <MenuItem onClick={() => window.location.assign("/empsignin")}>Employer Login</MenuItem>
-                                        <MenuItem onClick={() => window.location.assign("/worksignup")}>Worker Sign Up</MenuItem>
-                                        <MenuItem onClick={() => window.location.assign("/empsignup")}>Employer Sign Up</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign(`http://${window.location.hostname}:${window.location.port}/worksignin`)}>Worker Login</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign(`http://${window.location.hostname}:${window.location.port}/empsignin`)}>Employer Login</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign(`http://${window.location.hostname}:${window.location.port}/worksignup`)}>Worker Sign Up</MenuItem>
+                                        <MenuItem onClick={() => window.location.assign(`http://${window.location.hostname}:${window.location.port}/empsignup`)}>Employer Sign Up</MenuItem>
                                     </div>)}
                             </Menu>
                         </span>

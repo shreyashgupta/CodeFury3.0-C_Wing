@@ -6,8 +6,9 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage.js';
 import WorkerSignIn from './pages/WorkerSignIn/WorkerSignIn';
 import EmployerSignIn from './pages/EmployerSignIn/EmployerSignIn';
-import WorkerSignUp from './pages/WorkerSignUp/WorkerSignUp';
 import EmployerSignUp from './pages/EmployerSignUp/EmployerSignUp';
+import WorkerSignUp from './pages/WorkerSignUp/WorkerSignUp';
+import Profile from './pages/profile/profile';
 import AddJob from './pages/AddJob/AddJob';
 import Navbar from './components/Navbar/Navbar';
 import JobPortal from './pages/JobPortal/JobPortal';
@@ -22,6 +23,7 @@ function App() {
         <div className="App">
           <Route exact path='/'>
             <LandingPage />
+          
           </Route>
           <Route path='/empsignin'>
             <EmployerSignIn />
@@ -40,6 +42,9 @@ function App() {
           </Route>
           <Route path='/jobportal'>
             <JobPortal/>
+          </Route>
+          <Route path='/profile'>
+            <Profile/>
           </Route>
           {/* <Route path='/map'>
             <Map/>
