@@ -131,7 +131,7 @@ export default function Navbar() {
                                     >
                                         <List>
                                             {auth.currentUser ? (<div>
-                                                    <ListItem button key="My Profile" onClick={() => window.location.assign("/")}>
+                                                    <ListItem button key="My Profile" onClick={() => window.location.assign("/profile")}>
                                                         {/* <ListItemIcon>{index % 2 === 0 ? "My Profile" : 'My Jobs'}</ListItemIcon>  */}
                                                         <ListItemText primary="My Profile" />
                                                     </ListItem>
