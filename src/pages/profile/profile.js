@@ -58,9 +58,12 @@ async f1() {
 //     //this.setState(Object.assign(this.state.filteredJobs, { filteredJobs: array }))
 // }
 async componentWillMount() {
+  if(this.state.isLoggedIn)
+  {
   const obj = await this.f1();
   this.setState({data:obj});
   console.log(this.state.data);
+}
 }
 render(){
 

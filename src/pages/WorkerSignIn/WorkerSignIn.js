@@ -38,7 +38,7 @@ class WorkerSignIn extends React.Component {
   }
 
     f1 = async () => {
-    const snapShot = await firestore.collection('employers').get();
+    const snapShot = await firestore.collection('workers').get();
     const docsArray = snapShot.docs;
     const docsArrayData = docsArray.map(doc => doc.data());
     return docsArrayData;
